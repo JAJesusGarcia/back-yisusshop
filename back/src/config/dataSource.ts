@@ -7,12 +7,22 @@ import { Product } from '../entities/Product';
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  url: process.env.DATABASE_URL, // Usa la URL completa
+  url: process.env.DATABASE_URL, // Usar DATABASE_URL aquí
   synchronize: true,
   logging: false,
-  ssl: true,
   entities: [User, Credential, Order, Product, Category],
+  subscribers: [],
+  migrations: [],
 });
+
+// export const AppDataSource = new DataSource({
+//   type: 'postgres',
+//   url: process.env.DATABASE_URL, // Usa la URL completa
+//   synchronize: true,
+//   logging: false,
+//   ssl: true,
+//   entities: [User, Credential, Order, Product, Category],
+// });
 
 // export const AppDataSource = new DataSource({
 //   type: 'postgres',
