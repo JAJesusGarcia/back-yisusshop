@@ -7,14 +7,14 @@ WORKDIR /app
 # Copia los archivos package.json y package-lock.json al contenedor
 COPY package*.json ./
 
-# Instala las dependencias del proyecto
-RUN npm install
+# Instala las dependencias del proyecto (usa 'ci' para una instalación más confiable)
+RUN npm ci --only=production
 
 # Copia el resto del código al contenedor
 COPY . .
 
 # Corre el build
-RUN npm run build
+RUN npm run build --verbose
 
 # Expone el puerto en el que correrá la aplicación
 EXPOSE 3000
